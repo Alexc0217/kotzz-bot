@@ -1,23 +1,27 @@
 const wa = require('@open-wa/wa-automate');
-const db = require("./database/db");
 const User = require("./server/model/User");
 const userUtils = require("./server/utils/userUtils");
 const userResponse = require("./server/utils/userResponse");
 const imageToSticker = require("./server/utils/imageToSticker");
-//const gifToSticker = require("./server/utils/gifToSticker");
+const youtubeDownload = require("./server/utils/youtube/youtubeDownload");
+const googleResponse = require("./server/utils/google/googleResponse")
+const { formatParams } = require('./server/utils/formatParams');
 
-wa.create().then(client => start(client));
+wa.create(
+  {
+    executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
+  }
+).then(client => start(client));
 
 function start(client){
   User.userSchema();
   client.onAnyMessage(async message => {
-    console.log(message);
     //console.log("===========> " + message.from)
     //console.log("===========> " + message.content)
 
-    const command = message.text;
+    const command = message.text.split(" ");
 
-    switch (command) {
+    switch (command[0]) {
       case "!oi":
         userUtils.saveUser(message);
         userUtils.updateTotalUsed(message);
@@ -37,13 +41,24 @@ function start(client){
       case "!kotzz-help":
         await client.reply(message.chat.id, await userResponse.help(), message.id);
         break;
-        /*
-      case "!kotzz-sticker-gif":
+      case "!kotzz-commands":
+        await client.reply(message.chat.id, await userResponse.allCommands(), message.id);
+        break;
+      case "!kotzz-search":
         userUtils.saveUser(message);
         userUtils.updateTotalUsed(message);
-        await gifToSticker.gifToSticker(message, client);
+        await googleResponse.search(message, client, await formatParams(command))
         break;
-        */
+      case "!kz-yt-mp3":
+        userUtils.saveUser(message);
+        userUtils.updateTotalUsed(message);
+        await youtubeDownload.downloadMp3FromYoutube(await youtubeDownload.formatQuery(command), message, client);
+        break;
+      case "!kz-yt-mp4":
+        userUtils.saveUser(message);
+        userUtils.updateTotalUsed(message);
+        await youtubeDownload.downloadMp4FromYoutube(await youtubeDownload.formatQuery(command), message, client); 
+        break;
     }
     
   })

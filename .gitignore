@@ -2,3 +2,4 @@ _IGNORE_KOTZZ_BOT
 _IGNORE_session
 database
 node_modules
+ffmpeg

@@ -1,5 +1,14 @@
 const userUtils = require("./userUtils");
-
+const commands = [
+    "!kotzz-sticker",
+    "!kotzz-stats",
+    "!kotzz-rank",
+    "!kotzz-commands",
+    "!kotzz-search",
+    "!kz-yt-mp3",
+    "!kz-yt-mp4",
+    "!kotzz-help"
+]
 async function stats(message){
     const total_used = await userUtils.getTotalUsed(message);
     const response = "==== Kotzz Status ====\n" + "Você usou o bot " + total_used + " vezes."
@@ -16,14 +25,27 @@ async function rank(){
 }
 
 async function help(){
-    const commands = [
-        "!kotzz-sticker",
+    const help = [
+        '!kotzz-sticker (mande uma imagem com a legenda "!kotzz-sticker".)',
         "!kotzz-stats",
         "!kotzz-rank",
-        "!kotzz-help"
+        "!kotzz-commands",
+        "!kotzz-search (insira aqui o texto que deseja pesquisar.)",
+        "!kz-yt-mp3 (insira aqui o link ou o título do vídeo do youtube.)",
+        "!kz-yt-mp4 (insira aqui o link ou o título do vídeo do youtube.)",
+        '!kotzz-help'
     ]
 
-    var response = `==== Kotzz-Bot Comandos ====\n` 
+    var response = `==== Kotzz-Bot Help ====\n` 
+
+    for(var i = 0; i < help.length; i++){
+        response += `${help[i]}\n`
+    }
+    return response;
+}
+
+async function allCommands(){
+    var response = `==== Kotzz-Bot Commands ====\n` 
 
     for(var i = 0; i < commands.length; i++){
         response += `${commands[i]}\n`
@@ -31,4 +53,4 @@ async function help(){
     return response;
 }
 
-module.exports = {stats, rank, help};
+module.exports = {stats, rank, help, allCommands};
