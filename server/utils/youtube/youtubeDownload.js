@@ -36,7 +36,6 @@ async function downloadMp4FromYoutube(params, message, client){
     const youtubeSearch = await yts(params).then( async result => {
         const video = result.videos[0];
         try{
-            console.log(video.title.substring(0, 10));
             var title = video.title
             ytdl(video.url)
             .pipe(fs.createWriteStream(`./media/ytmp4/${video.title.substring(0, 20)}.mp4`))

@@ -7,6 +7,7 @@ const commands = [
     "!kotzz-search",
     "!kz-yt-mp3",
     "!kz-yt-mp4",
+    "!kz-horoscope",
     "!kotzz-help"
 ]
 async function stats(message){
@@ -33,6 +34,7 @@ async function help(){
         "!kotzz-search (insira aqui o texto que deseja pesquisar.)",
         "!kz-yt-mp3 (insira aqui o link ou o título do vídeo do youtube.)",
         "!kz-yt-mp4 (insira aqui o link ou o título do vídeo do youtube.)",
+        "!kz-horoscope (insira aqui seu signo)",
         '!kotzz-help'
     ]
 
