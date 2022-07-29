@@ -4,3 +4,10 @@ database
 node_modules
 ffmpeg
 server/utils/twitter
+server/utils/options
+
+# managed
+**.data.json
+**.node-persist**
+**_IGNORE_**
+# end managed

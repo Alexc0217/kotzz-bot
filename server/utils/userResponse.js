@@ -1,14 +1,14 @@
 const userUtils = require("./userUtils");
 const commands = [
-    "!kotzz-sticker",
-    "!kotzz-stats",
-    "!kotzz-rank",
-    "!kotzz-commands",
-    "!kotzz-search",
+    "!kz-sticker",
+    "!kz-stats",
+    "!kz-rank",
+    "!kz-commands",
+    "!kz-search",
     "!kz-yt-mp3",
     "!kz-yt-mp4",
     "!kz-horoscope",
-    "!kotzz-help"
+    "!kz-help"
 ]
 async function stats(message){
     const total_used = await userUtils.getTotalUsed(message);
@@ -27,18 +27,18 @@ async function rank(){
 
 async function help(){
     const help = [
-        '!kotzz-sticker (mande uma imagem com a legenda "!kotzz-sticker".)',
-        "!kotzz-stats",
-        "!kotzz-rank",
-        "!kotzz-commands",
-        "!kotzz-search (insira aqui o texto que deseja pesquisar.)",
-        "!kz-yt-mp3 (insira aqui o link ou o título do vídeo do youtube.)",
-        "!kz-yt-mp4 (insira aqui o link ou o título do vídeo do youtube.)",
-        "!kz-horoscope (insira aqui seu signo)",
-        '!kotzz-help'
+        '*|------ !kz-sticker ------|*\nComo usar: Mande uma imagem seguida do comando\n',
+        '*|------ !kz-stats ------|*\nVeja quantas vezes você usou o bot\n',
+        '*|------ !kz-rank ------|*\nVeja as pessoas que mais usaram o bot\n',
+        '*|------ !kz-commands ------|*\nVeja a lista de comandos do Kotzz Bot\n',
+        '*|------ !kz-search ------|*\nComo usar: digite o comando seguido de algo que você queira pesquisar\nEx: *!kz-search* como fazer café\n',
+        '*|------ !kz-yt-mp3 ------|*\nBaixe um mp3 direto do youtube\nComo usar: digite o comando seguido de um link ou um titulo de um vídeo\nEx: *!kz-yt-mp3* Die for you - the weekend\n',
+        "*|------ !kz-yt-mp4 ------|*\nBaixe um vídeo direto do youtube\nComo usar: digite o comando seguido de um link ou um titulo de um vídeo\nEx: *!kz-yt-mp4* Die for you - the weekend\n",
+        "*|------ !kz-horoscope ------|*\nVeja seu horóscopo do dia\nComo usar: digite o comando seguido do seu signo\nEx: *!kz-horoscope* aquário\n",
+        '*|------ !kz-help ------|*\n'
     ]
 
-    var response = `==== Kotzz-Bot Help ====\n` 
+    var response = `Olá, sou o Bot do Kotzz!\n\nTenho diversos comandos para a sua comodidade.\n\n` 
 
     for(var i = 0; i < help.length; i++){
         response += `${help[i]}\n`

@@ -12,7 +12,7 @@
   "author": "Kotzz",
   "license": "ISC",
   "dependencies": {
-    "@open-wa/wa-automate": "^4.42.8",
+    "@open-wa/wa-automate": "^4.43.1",
     "ffmpeg": "^0.0.4",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.19",
