@@ -6,4 +6,15 @@ async function formatParams(command){
     return params;
 }
 
-module.exports = {formatParams};
+async function formatParamsWithObj(command){
+  var names = [];
+    for(var i = 1; i < command.length; i++){
+      if(command[i] === "" || command[i] === " "){
+
+      }else{
+        names.push({id: i, name: command[i]});
+      }
+    }
+    return names;
+}
+module.exports = {formatParams, formatParamsWithObj};

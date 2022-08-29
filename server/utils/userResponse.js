@@ -8,6 +8,7 @@ const commands = [
     "!kz-yt-mp3",
     "!kz-yt-mp4",
     "!kz-horoscope",
+    "!sortear",
     "!kz-help"
 ]
 async function stats(message){
@@ -35,6 +36,7 @@ async function help(){
         '*|------ !kz-yt-mp3 ------|*\nBaixe um mp3 direto do youtube\nComo usar: digite o comando seguido de um link ou um titulo de um vídeo\nEx: *!kz-yt-mp3* Die for you - the weekend\n',
         "*|------ !kz-yt-mp4 ------|*\nBaixe um vídeo direto do youtube\nComo usar: digite o comando seguido de um link ou um titulo de um vídeo\nEx: *!kz-yt-mp4* Die for you - the weekend\n",
         "*|------ !kz-horoscope ------|*\nVeja seu horóscopo do dia\nComo usar: digite o comando seguido do seu signo\nEx: *!kz-horoscope* aquário\n",
+        '*|------ !sortear ------|*\nSorteie uma lista de palavras\nComo usar: digite o comando seguido de diversas palavras\nEx: !sortear Alex Bruno Caique Duda Enéias\n',
         '*|------ !kz-help ------|*\n'
     ]
 

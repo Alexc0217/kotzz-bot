@@ -12,10 +12,26 @@ async function saveUser(message){
 }
 
 async function updateTotalUsed(message){
-    if(await User.userExists(message.sender.id)){
-        user_controller.updateTotalUsed(message.sender.id);
+    const [user] = await User.findUserById(message.sender.id);
+    if(isDev(message)){
+        console.log("user is a dev.");
     }else{
-        console.log("User doesn't exist. ");
+        if(await User.userExists(message.sender.id)){
+            user_controller.updateTotalUsed(message.sender.id);
+        }else{
+            console.log("User doesn't exist. ");
+        }
+    }
+}
+
+async function isDev(message){
+    const [user] = await User.findUserById(message.sender.id);
+    if(user.user_type === "dev"){
+        console.log(`${message.sender.pushname} é um dev. `);
+        return true;
+    }else{
+        console.log(`${message.sender.pushname} não é um dev. `)
+        return false;
     }
 }
 
@@ -35,4 +51,4 @@ async function getRank(){
     }
 }
 
-module.exports = {saveUser, updateTotalUsed, getTotalUsed, getRank};
+module.exports = {saveUser, updateTotalUsed, getTotalUsed, getRank, isDev};

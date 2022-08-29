@@ -7,7 +7,8 @@ const youtubeDownload = require("./server/utils/youtube/youtubeDownload");
 const googleResponse = require("./server/utils/google/googleResponse");
 const diaryHoroscope = require("./server/utils/horoscope/diaryHoroscope");
 const options = require("./server/utils/options/options");
-const { formatParams } = require('./server/utils/formatParams');
+const raffle = require("./server/utils/raffle/raffle");
+const { formatParams, formatParamsWithObj } = require('./server/utils/formatParams');
 
 wa.create(
   {
@@ -17,10 +18,12 @@ wa.create(
 
 function start(client){
   User.userSchema();
+  var handle = 0;
   client.onAnyMessage(async message => {
     const command = message.text.split(" ");
-
+    
     switch (command[0]) {
+
       case "!oi":
         userUtils.saveUser(message);
         userUtils.updateTotalUsed(message);
@@ -62,6 +65,11 @@ function start(client){
         userUtils.saveUser(message);
         userUtils.updateTotalUsed(message);
         await diaryHoroscope.diary(message, client, command[1]);
+        break;
+      case "!sortear":
+        userUtils.saveUser(message);
+        userUtils.updateTotalUsed(message);
+        await raffle.raffle(await formatParamsWithObj(command), client, message);
         break;
       case "!kz-options":
         const collector = client.createMessageCollector(message.chat.id, secondMessage => {secondMessage.chat.id === message.chat.id}, {
