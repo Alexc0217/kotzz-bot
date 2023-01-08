@@ -17,4 +17,12 @@ async function formatParamsWithObj(command){
     }
     return names;
 }
-module.exports = {formatParams, formatParamsWithObj};
+
+async function formatCopypasta(command){
+  var copypasta = "";
+  for(var i = 2; i < command.length; i++){
+    copypasta = copypasta + ` ${command[i]}`
+  }
+  return copypasta;
+}
+module.exports = {formatParams, formatParamsWithObj, formatCopypasta};

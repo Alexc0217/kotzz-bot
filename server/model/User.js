@@ -1,6 +1,6 @@
 async function userSchema(){
     const db = require("../../database/db");
-    const exist = await db.tableExists("users")
+    const exist = await db.tableExists("users");
     if(exist){
         console.log(exist);
         return "table Users already exists.";

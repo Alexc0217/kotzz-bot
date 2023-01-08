@@ -53,14 +53,14 @@ async function downloadMp4FromYoutube(params, message, client){
                     try{
                         var title = video.title
                         ytdl(video.url)
-                        .pipe(fs.createWriteStream(`./media/ytmp4/${video.title.substring(0, 20)}.mp4`))
+                        .pipe(fs.createWriteStream(`./media/ytmp4/${video.videoId.substring(0, 20)}.mp4`))
                         .on('close', (data) => {
-                            var vd = fs.readFileSync(`./media/ytmp4/${video.title.substring(0, 20)}.mp4`);
+                            var vd = fs.readFileSync(`./media/ytmp4/${video.videoId.substring(0, 20)}.mp4`);
                             const videoBase64 = `data:${message.mimetype};base64,${vd.toString(
                                 'base64'
                             )}`;
-                            client.sendFile(message.chat.id, videoBase64, `${video.title.substring(0, 20)}.mp4`, `Vídeo: ${title}\n duração: ${video.duration}`, message.id).then(() => {
-                                fs.unlinkSync(`./media/ytmp4/${video.title.substring(0, 20)}.mp4`);
+                            client.sendFile(message.chat.id, videoBase64, `${video.videoId.substring(0, 20)}.mp4`, `Vídeo: ${title}\n duração: ${video.duration}`, message.id).then(() => {
+                                fs.unlinkSync(`./media/ytmp4/${video.videoId.substring(0, 20)}.mp4`);
                             })
                         })
                     }catch(err){

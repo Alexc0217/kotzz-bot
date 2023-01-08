@@ -37,6 +37,9 @@ async function help(){
         "*|------ !kz-yt-mp4 ------|*\nBaixe um vídeo direto do youtube\nComo usar: digite o comando seguido de um link ou um titulo de um vídeo\nEx: *!kz-yt-mp4* Die for you - the weekend\n",
         "*|------ !kz-horoscope ------|*\nVeja seu horóscopo do dia\nComo usar: digite o comando seguido do seu signo\nEx: *!kz-horoscope* aquário\n",
         '*|------ !sortear ------|*\nSorteie uma lista de palavras\nComo usar: digite o comando seguido de diversas palavras\nEx: !sortear Alex Bruno Caique Duda Enéias\n',
+        '*|------ !kz-copypasta-new ------|*\nCrie uma nova copypasta e armazene no bot\nComo usar: Digite o comando no seguinte modelo:\n*!kz-copypasta-new nome-da-copypasta texto*\n\nDigite !kz-copypasta para mais informações.\n',
+        '*|------ !kz-copypasta-todas ------|*\nVeja a lista de copypastas armazenadas no bot\n',
+        '*|------ !kz-copypasta-buscar ------|*\nApós ver a lista de copypastas do bot, pegue um ID para buscar uma copypasta específica.\nEx: !kz-copypasta-buscar 4\n',
         '*|------ !kz-help ------|*\n'
     ]
 
@@ -48,6 +51,11 @@ async function help(){
     return response;
 }
 
+async function copypasta(){
+  const response = `Preste bastante atenção aos comandos de Copypasta!\n\nPara criar uma nova copypasta, utilize o comando:\n!kz-copypasta-new nome-da-copypasta texto\nPeço que siga com cautela o comando e utilize "-" para separar o título da copypasta, caso contrário a copypasta pode ir errada.\n\n`
+  return response;
+}
+
 async function allCommands(){
     var response = `==== Kotzz-Bot Commands ====\n` 
 
@@ -57,4 +65,4 @@ async function allCommands(){
     return response;
 }
 
-module.exports = {stats, rank, help, allCommands};
+module.exports = {stats, rank, help, allCommands, copypasta};
